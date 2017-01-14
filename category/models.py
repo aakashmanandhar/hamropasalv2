@@ -6,7 +6,7 @@ class Category(models.Model):
     description = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on= models.DateTimeField(auto_now=True)
-    category_id=models.ForeignKey('self', blank=True, null=True)
+    category=models.ForeignKey('self', blank=True, null=True, verbose_name='Parent', related_name='childern')
     
     def __str__(self):
         return(self.name)

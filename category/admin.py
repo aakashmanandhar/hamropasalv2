@@ -3,9 +3,9 @@ from .models import Category, Product
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'created_on', 'updated_on', 'category_id' )
+    list_display = ('name', 'description', 'created_on', 'updated_on', 'category' )
     list_filter = ('name', )
-    fields = ('name', 'category_id')
+    fields = ('name', 'category')
     search_fields = ('name', )
 
 admin.site.register(Category, CategoryAdmin)

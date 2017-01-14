@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from category.views import home_page
+from category.views import home_page, products
 
 urlpatterns = [
-    url(r'^$', home_page),
+    url(r'^$', home_page, name='homepage'),
+    url(r'^category/(?P<category_id>[0-9]+)', products, name='products'),
     url(r'^admin/', admin.site.urls),
 ]
