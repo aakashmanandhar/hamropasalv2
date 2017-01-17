@@ -5,8 +5,9 @@ from .models import Category
 # Create your views here.
 
 def home_page(request):
+    # categories = Category.objects.filter(name__isnull=False, category__isnull=True)
     categories = Category.objects.all()
-    print(categories)
+    print(categories.query)
     return render(request, 'homepage.html', {'categories':categories})
 
 def products(request, category_id):

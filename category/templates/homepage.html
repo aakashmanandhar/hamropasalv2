@@ -15,19 +15,32 @@
       </div>
 
       
-      <div class="row">      
-      {% for category in categories %}
+      <!--<div class="row">-->
+      <!--{% for category in categories %}-->
       <!--{% if category.name.strip %}-->
-        <div class="col-md-3">
-          <div class="panel panel-default">
-            <div class="panel-body">
-            <a href="{% url 'products' category.id %}">{{ category.name }}</a>
-            </div>
-          </div>
-        </div
+        <!--<div class="col-md-3">-->
+          <!--<div class="panel panel-default">-->
+            <!--<div class="panel-body">-->
+            <!--<a href="{% url 'products' category.id %}">{{ category.name }}</a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div-->
       <!--{% endif %}-->
-      {% endfor %}
+      <!--{% endfor %}-->
+      <!--</div>-->
+
+      {% for category in categories %}
+      <div class="dropdown"> 
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{ category.name }} <span class="caret"></span> </button>
+        {% if category.children.count %}
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          {% for cat in category.children.all %}
+          <li><a href="{% url 'products' cat.id %}">{{ cat.name }}</a></li>
+          {% endfor %}
+        </ul> 
+        {% endif %}
       </div>
+      {% endfor %}
 
     {% include 'footer.html' %}
 
