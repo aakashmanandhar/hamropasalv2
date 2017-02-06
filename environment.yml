@@ -1,4 +1,4 @@
-name: hamropasal
+name: pysessions
 dependencies:
   - python=3.5
   - django=1.10
